@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/head"></head>
+    <title>豆瓣数据</title>
+</head>
+
+<body>
+
+<div id="app">
+    <div th:replace="common/guide"></div>
+</div>
+
+</body>
+<div th:replace="common/js"></div>
+<script type="text/javascript" th:src="@{../../js/douban.js}"></script>
+</html>
