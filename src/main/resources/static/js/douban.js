@@ -40,6 +40,7 @@ new Vue({
 
         //调整页面展示数量
         handleSizeChange(val) {
+            this.pageConf.pageSize = val;
             this.search(this.pageConf.pageCode, val);
         },
 
