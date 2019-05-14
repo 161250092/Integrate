@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/douban")
-public class DoubanDataController {
+public class DoubanController {
 
     @Autowired
     private DoubanService doubanService;
