@@ -20,7 +20,7 @@ new Vue({
             showingHotComments:false,
 
 
-            activeIndex: '1'
+            activeIndex: '2'
 
         }
     },
