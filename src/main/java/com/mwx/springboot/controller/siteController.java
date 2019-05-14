@@ -24,7 +24,10 @@ public class siteController {
     }
 
 
-
+    @GetMapping("/integrate")
+    public String integrate(){
+        return "integrate";
+    }
 
 
 
