@@ -8,7 +8,7 @@ public class MySQLConnector {
 
     public Connection getConnection(String DataBaseName) {
 
-        String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+        String JDBC_DRIVER = "com.mysql.jdbc.Driver";
         String DB_URL = "jdbc:mysql://localhost:3306/";
 
         // 数据库的用户名与密码
