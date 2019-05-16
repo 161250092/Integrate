@@ -20,4 +20,9 @@ public class DoubanServiceImpl implements  DoubanService{
     public Movie findDouBanDataByMovieName(String name) {
         return null;
     }
+
+    @Override
+    public Movie searchDouBanMovies(String searchInfo) {
+        return null;
+    }
 }

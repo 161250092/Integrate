@@ -17,4 +17,9 @@ public class IntegratedFilmServiceImpl implements  IntegratedFilmService{
     public IntegratedFilm findIntegratedFilmByName(String name) {
         return null;
     }
+
+    @Override
+    public IntegratedFilm searchIntegratedFilm(String searchInfo) {
+        return null;
+    }
 }
