@@ -1,5 +1,6 @@
 package com.mwx.springboot.dao;
 
+
 import com.mwx.springboot.entity.douban.Hotcomment;
 import com.mwx.springboot.entity.douban.Movie;
 import com.mwx.springboot.entity.PageBean;

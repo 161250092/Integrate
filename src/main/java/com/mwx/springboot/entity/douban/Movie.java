@@ -1,6 +1,5 @@
 package com.mwx.springboot.entity.douban;
 
-import com.mwx.springboot.entity.douban.Hotcomment;
 
 import java.io.Serializable;
 import java.util.List;
