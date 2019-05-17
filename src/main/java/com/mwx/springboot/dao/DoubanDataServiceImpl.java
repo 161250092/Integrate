@@ -167,8 +167,9 @@ public class DoubanDataServiceImpl implements DoubanDataService{
                 movieXML.addElement("time").addText(movie.getTime());
                 movieXML.addElement("peopleNumber").addText(movie.getPeopleNumber());
                 movieXML.addElement("introduction").addText(movie.getIntroduction());
-                Element hotCommentXML = movieXML.addElement("hotComments");
+                Element hotCommentsXML = movieXML.addElement("hotComments");
                 for (Hotcomment hotcomment:movie.getHotcommentList()){
+                    Element hotCommentXML=hotCommentsXML.addElement("hotComment");
                     hotCommentXML.addElement("hotCommentAuthor").addText(hotcomment.getHotCommentAuthor());
                     hotCommentXML.addElement("hotCommentDate").addText(hotcomment.getHotCommentDate());
                     hotCommentXML.addElement("hotCommentContent").addText(hotcomment.getHotCommentContent());
@@ -240,8 +241,9 @@ public class DoubanDataServiceImpl implements DoubanDataService{
                 movieXML.addElement("time").addText(movie.getTime());
                 movieXML.addElement("peopleNumber").addText(movie.getPeopleNumber());
                 movieXML.addElement("introduction").addText(movie.getIntroduction());
-                Element hotCommentXML = movieXML.addElement("hotComments");
+                Element hotCommentsXML = movieXML.addElement("hotComments");
                 for (Hotcomment hotcomment:movie.getHotcommentList()){
+                    Element hotCommentXML=hotCommentsXML.addElement("hotComment");
                     hotCommentXML.addElement("hotCommentAuthor").addText(hotcomment.getHotCommentAuthor());
                     hotCommentXML.addElement("hotCommentDate").addText(hotcomment.getHotCommentDate());
                     hotCommentXML.addElement("hotCommentContent").addText(hotcomment.getHotCommentContent());
@@ -322,8 +324,9 @@ public class DoubanDataServiceImpl implements DoubanDataService{
             movieXML.addElement("time").addText(movie.getTime());
             movieXML.addElement("peopleNumber").addText(movie.getPeopleNumber());
             movieXML.addElement("introduction").addText(movie.getIntroduction());
-            Element hotCommentXML = movieXML.addElement("hotComments");
+            Element hotCommentsXML = movieXML.addElement("hotComments");
             for (Hotcomment hotcomment:movie.getHotcommentList()){
+                Element hotCommentXML=hotCommentsXML.addElement("hotComment");
                 hotCommentXML.addElement("hotCommentAuthor").addText(hotcomment.getHotCommentAuthor());
                 hotCommentXML.addElement("hotCommentDate").addText(hotcomment.getHotCommentDate());
                 hotCommentXML.addElement("hotCommentContent").addText(hotcomment.getHotCommentContent());
