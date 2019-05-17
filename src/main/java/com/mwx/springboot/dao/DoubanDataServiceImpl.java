@@ -6,11 +6,10 @@ import com.mwx.springboot.entity.douban.Movie;
 import com.mwx.springboot.entity.PageBean;
 import org.springframework.stereotype.Service;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.sql.*;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -175,7 +174,17 @@ public class DoubanDataServiceImpl implements DoubanDataService{
             }
             String result = document.asXML();
             System.out.println(result);
-            return result;
+
+        String fileName ="douban/"+getNowTime()+".xml";
+
+        try {
+            OutputFormat format = OutputFormat.createPrettyPrint();
+            XMLWriter writer = new XMLWriter( new FileOutputStream(new File(fileName)), format);
+            writer.write(document);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+            return fileName;
     }
 
     @Override
@@ -236,7 +245,17 @@ public class DoubanDataServiceImpl implements DoubanDataService{
                     hotCommentXML.addElement("hotCommentContent").addText(hotcomment.getHotCommentContent());
                 }
                 System.out.println(document.asXML());
-                return document.asXML();
+
+                String fileName ="douban/"+getNowTime()+".xml";
+
+                try {
+                    OutputFormat format = OutputFormat.createPrettyPrint();
+                    XMLWriter writer = new XMLWriter( new FileOutputStream(new File(fileName)), format);
+                    writer.write(document);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return fileName;
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -308,9 +327,24 @@ public class DoubanDataServiceImpl implements DoubanDataService{
                 hotCommentXML.addElement("hotCommentContent").addText(hotcomment.getHotCommentContent());
             }
         }
+
+        if(movies.size()==0){
+            return null;
+        }
+
+        String fileName ="douban/"+getNowTime()+".xml";
+
+        try {
+            OutputFormat format = OutputFormat.createPrettyPrint();
+            XMLWriter writer = new XMLWriter( new FileOutputStream(new File(fileName)), format);
+            writer.write(document);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         String result = document.asXML();
         System.out.println(result);
-        return result;
+        return fileName;
     }
 
     @Override
@@ -320,11 +354,17 @@ public class DoubanDataServiceImpl implements DoubanDataService{
 
     public static void main(String[] args){
         DoubanDataServiceImpl doubanDataService=new DoubanDataServiceImpl();
-        doubanDataService.searchDouBanMovies("钢铁侠");
+        doubanDataService.findDouBanDataByMovieName("钢铁侠");
 
     }
 
 
+    public String getNowTime(){
+        Date now = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");//可以方便地修改日期格式
+        String hehe = dateFormat.format( now );
+        return hehe;
+    }
 }
 
 
