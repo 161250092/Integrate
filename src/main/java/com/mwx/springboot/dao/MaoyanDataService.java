@@ -12,4 +12,10 @@ public interface MaoyanDataService {
      */
     public PageBean findMaoYanDataByConPage(int pageCode, int pageSize);
 
+    public String findMaoYanDataByConPageXML(int pageCode, int pageSize);
+
+    public String findMaoYanDataByMovieName(String name);
+
+    public String searchMaoYanMovies(String name);
+
 }

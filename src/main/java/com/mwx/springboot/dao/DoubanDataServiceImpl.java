@@ -70,7 +70,9 @@ public class DoubanDataServiceImpl implements DoubanDataService{
                 movies.add(movie);
 
             }
-
+            set.close();
+            stmt.close();
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -142,7 +144,7 @@ public class DoubanDataServiceImpl implements DoubanDataService{
     }
 
 
-    public String buildXMLPageBean(PageBean pageBean) {
+    private String buildXMLPageBean(PageBean pageBean) {
             // 创建Document
             Document document = DocumentHelper.createDocument();
 

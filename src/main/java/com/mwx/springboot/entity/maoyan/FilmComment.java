@@ -1,12 +1,12 @@
-package com.mwx.springboot.entity.moyan;
+package com.mwx.springboot.entity.maoyan;
 
 public class FilmComment {
 
-    private String id;
+    private int id;
     private String filmName;
     private String comment;
 
-    public FilmComment(String id, String filmName, String comment) {
+    public FilmComment(int id, String filmName, String comment) {
         this.id = id;
         this.filmName = filmName;
         this.comment = comment;
@@ -15,11 +15,11 @@ public class FilmComment {
     public FilmComment() {
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

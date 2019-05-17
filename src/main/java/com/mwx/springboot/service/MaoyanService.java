@@ -1,7 +1,7 @@
 package com.mwx.springboot.service;
 
 import com.mwx.springboot.entity.PageBean;
-import com.mwx.springboot.entity.moyan.Film;
+import com.mwx.springboot.entity.maoyan.Film;
 
 public interface MaoyanService {
 

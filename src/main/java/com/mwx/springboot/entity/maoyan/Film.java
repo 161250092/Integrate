@@ -1,11 +1,11 @@
-package com.mwx.springboot.entity.moyan;
+package com.mwx.springboot.entity.maoyan;
 
 import java.io.Serializable;
 import java.util.List;
 
 public class Film implements Serializable {
 
-    private String id;
+    private int id;
     private String name;
     private String director;
     private String type;
@@ -19,7 +19,9 @@ public class Film implements Serializable {
     public Film() {
     }
 
-    public Film(String id, String name, String director, String type, String filmingLocation, String duration, String releasedTime, String score, String description, List<FilmComment> filmCommentList) {
+    public Film(int id, String name, String director, String type, String filmingLocation,
+                String duration, String releasedTime, String score, String description,
+                List<FilmComment> filmCommentList) {
         this.id = id;
         this.name = name;
         this.director = director;
@@ -32,11 +34,11 @@ public class Film implements Serializable {
         this.filmCommentList = filmCommentList;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
