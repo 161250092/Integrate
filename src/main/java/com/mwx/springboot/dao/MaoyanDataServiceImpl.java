@@ -21,7 +21,7 @@ import java.util.List;
 public class MaoyanDataServiceImpl implements MaoyanDataService{
     private Connection conn;
 
-    private String db = "maoYanFilm";
+    private String db = "Integrate";
 
     @Override
     public PageBean findMaoYanDataByConPage(int pageCode, int pageSize) {
@@ -171,10 +171,11 @@ public class MaoyanDataServiceImpl implements MaoyanDataService{
     private String writeXML(List<Film> films){
         Document document = DocumentHelper.createDocument();
 
-        Element root = document.addElement("maoYanFilm");
+        Element root = document.addElement("root");
 
         for(Film one : films){
-            Element filmInfo = root.addElement("filmInfo");
+            Element oneFilm = root.addElement("maoYanFilm");
+            Element filmInfo = oneFilm.addElement("filmInfo");
             filmInfo.addAttribute("id", one.getId() + "");
             filmInfo.addElement("name").addText(one.getName());
             filmInfo.addElement("director").addText(one.getDirector());
@@ -184,10 +185,10 @@ public class MaoyanDataServiceImpl implements MaoyanDataService{
             filmInfo.addElement("releasedTime").addText(one.getReleasedTime());
             filmInfo.addElement("score").addText(one.getScore());
 
-            Element filmDescription = root.addElement("filmDescription");
+            Element filmDescription = oneFilm.addElement("filmDescription");
             filmDescription.addElement("description").addText(one.getDescription());
 
-            Element filmComments = root.addElement("filmComments");
+            Element filmComments = oneFilm.addElement("filmComments");
             for(FilmComment oneFilmComment : one.getFilmCommentList()){
                 filmComments.addElement("hotComment").addText(oneFilmComment.getComment());
             }

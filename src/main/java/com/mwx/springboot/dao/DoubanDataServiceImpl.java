@@ -357,12 +357,6 @@ public class DoubanDataServiceImpl implements DoubanDataService{
         return buildXMLPageBean(findDouBanDataByConPage(pageCode, pageSize));
     }
 
-    public static void main(String[] args){
-        DoubanDataServiceImpl doubanDataService=new DoubanDataServiceImpl();
-        doubanDataService.findDouBanDataByMovieName("钢铁侠");
-
-    }
-
 
     public String getNowTime(){
         Date now = new Date();
