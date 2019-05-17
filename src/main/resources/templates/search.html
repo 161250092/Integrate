@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/head"></head>
+<title>搜索</title>
+</head>
+<body>
+<div id="app">
+
+    <div th:replace="common/guide"></div>
+
+    <br>
+    <el-row>
+        <el-col >搜索电影信息</el-col>
+        <el-col :span="8">
+            <el-input v-model="searchInfo" placeholder="请输入内容"></el-input>
+        </el-col>
+
+        <el-col :span="6">
+            <el-select v-model="searchType" placeholder="请选择">
+                <el-option label="豆瓣"  value="豆瓣">
+                </el-option>
+                <el-option label="猫眼"  value="猫眼">
+                </el-option>
+                <el-option label="豆瓣/猫眼"  value="豆瓣/猫眼">
+                </el-option>
+            </el-select>
+            <el-button @click="searchFilmInfo()">搜索</el-button>
+        </el-col>
+
+    </el-row>
+
+
+    <br>
+
+
+    <div v-if="showState.showDouban">
+        <el-row>
+            <p>{{filmInfo.title}}</p>
+            <p>导演  {{filmInfo.directors}}  </p>
+            <p>评分  {{filmInfo.rate}}</p>
+            <p>{{filmInfo.casts}}</p>
+            <p>{{filmInfo.type}}</p>
+            <p>{{filmInfo.nation}}</p>
+            <p>{{filmInfo.language}}</p>
+            <p>{{filmInfo.date}}</p>
+            <p>{{filmInfo.time}}</p>
+            <p>{{filmInfo.peopleNumber}}</p>
+            <p>{{filmInfo.introduction}}</p>
+
+            <el-table :data="filmInfo.hotcommentList" style="width: 50%">
+                <el-table-column label="评论" prop="hotCommentContent" align="center">
+                </el-table-column>
+            </el-table>
+
+        </el-row>
+    </div>
+
+
+    <div v-if="showState.showMaoYan">
+        <el-row>
+            <p>  {{filmInfo.name}}</p>
+            <p>  {{filmInfo.director}}</p>
+            <p>{{filmInfo.type}}</p>
+            <p>{{filmInfo.filmingLocation}}</p>
+            <p>{{filmInfo.duration}}</p>
+            <p>{{filmInfo.releasedTime}}</p>
+            <p>{{filmInfo.score}}</p>
+            <p>{{filmInfo.description}}</p>
+
+            <el-table :data="filmInfo.filmCommentList" style="width: 50%">
+                <el-table-column label="评论" prop="comment" align="center">
+                </el-table-column>
+            </el-table>
+
+        </el-row>
+    </div>
+
+
+    <div v-if="showState.showIntegrate">
+        <el-row>
+
+            <el-table :data="filmInfo.comments" style="width: 50%">
+
+                <el-table-column label="评论" prop="content" align="center">
+                </el-table-column>
+
+            </el-table>
+
+        </el-row>
+    </div>
+
+
+
+
+
+
+</div>
+
+</body>
+<div th:replace="common/js"></div>
+<script type="text/javascript" th:src="@{../../js/search.js}"></script>
+</html>

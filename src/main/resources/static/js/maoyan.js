@@ -4,7 +4,7 @@ new Vue({
     el: '#app',
     data() {
         return {
-            movies: [{}],
+            films: [{}],
 
             pageConf: {
                 //设置一些初始值(会被覆盖)
@@ -15,9 +15,9 @@ new Vue({
             },
 
             //对话框中展示的热评
-            HotComments: [{}],
+            filmComments: [{}],
 
-            showingHotComments:false,
+            showingFilmComments:false,
 
 
             activeIndex: '2'
@@ -32,7 +32,7 @@ new Vue({
                 pageCode:pageCode
             }).then(result => {
                 console.log(result);
-                this.movies = result.body.rows;
+                this.films = result.body.rows;
                 this.pageConf.totalPage = result.body.total;
             });
 
@@ -53,20 +53,20 @@ new Vue({
 
         checkHotComment(id){
 
-            for(let i=0;i<this.movies.length;i++){
-                if(this.movies[i].id===id){
-                    this.HotComments = this.movies[i].hotcommentList;
+            for(let i=0;i<this.films.length;i++){
+                if(this.films[i].id===id){
+                    this.filmComments = this.films[i].filmCommentList;
                     break;
                 }
             }
 
-            this.showingHotComments=true;
+            this.showingFilmComments=true;
 
         },
 
 
         closeComments(){
-            this.showingHotComments=false;
+            this.showingFilmComments=false;
         }
 
 

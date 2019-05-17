@@ -29,6 +29,9 @@ public class siteController {
         return "integrate";
     }
 
+    @GetMapping("/search")
+    public String search(){return "search";}
+
 
 
 }
