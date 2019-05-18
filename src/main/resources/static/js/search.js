@@ -17,13 +17,141 @@ new Vue({
                 showIntegrate:false
             },
 
+
+            //模糊查询显示状态
+            FuzzyQueryState:{
+                showDouban:false,
+                showMaoYan:false,
+                showIntegrate:false
+            },
+
+            //豆瓣的模糊查询结果
+            movies: [{}],
+            HotComments: [{}],
+            showingHotComments:false,
+
+
+
+            //猫眼的模糊查询结果
+            films: [{}],
+            filmComments: [{}],
+            showingFilmComments:false,
+
+
+            //集成数据的模糊查询结果
+
+
+
+
             activeIndex: '4'
 
         }
     },
     methods: {
+        fuzzyQuery(){
+
+            if(this.searchType==='')
+            {
+                alert("请选择查询类型");
+                return;
+            }
+            this.closeAllAccurateInfo();
+            if(this.searchType==="豆瓣")
+                this.fuzzyQueryThroughDouban();
+            else if(this.searchType==="猫眼")
+                this.fuzzyQueryThroughMaoyan();
+            else
+                this.fuzzyQueryThroughIntegrate();
+        },
+
+
+        //豆瓣模糊查询
+        fuzzyQueryThroughDouban(){
+            this.FuzzyQueryState.showDouban = true;
+            this.FuzzyQueryState.showMaoYan = false;
+            this.FuzzyQueryState.showIntegrate = false;
+
+            this.$http.post('/douban/searchDouBanMovies',{
+                searchInfo:this.searchInfo
+            }).then(result => {
+                console.log(result);
+                this.movies = result.body;
+            });
+        },
+
+        checkDoubanComment(id){
+            for(let i=0;i<this.movies.length;i++){
+                if(this.movies[i].id===id){
+                    this.HotComments = this.movies[i].hotcommentList;
+                    break;
+                }
+            }
+            this.showingHotComments=true;
+
+        },
+
+        closeDoubanComments(){
+            this.showingHotComments=false;
+        },
+
+
+        //猫眼模糊查询
+        fuzzyQueryThroughMaoyan(){
+            this.FuzzyQueryState.showDouban = false;
+            this.FuzzyQueryState.showMaoYan = true;
+            this.FuzzyQueryState.showIntegrate = false;
+
+            this.$http.post('/maoyan/searchMaoyanMovies',{
+                searchInfo:this.searchInfo
+            }).then(result => {
+                console.log(result);
+                this.films = result.body;
+            });
+        },
+
+
+        checkMaoyanComment(id){
+            for(let i=0;i<this.films.length;i++){
+                if(this.films[i].id===id){
+                    this.filmComments = this.films[i].filmCommentList;
+                    break;
+                }
+            }
+            this.showingFilmComments=true;
+
+        },
+
+        closeMaoyanComments(){
+            this.showingFilmComments=false;
+        },
+
+
+
+
+
+        fuzzyQueryThroughIntegrate(){
+            this.FuzzyQueryState.showDouban = false;
+            this.FuzzyQueryState.showMaoYan = false;
+            this.FuzzyQueryState.showIntegrate = true;
+
+            alert("undo");
+
+        },
+
+        closeAllAccurateInfo(){
+            this.showState.showDouban = false;
+            this.showState.showMaoYan = false;
+            this.showState.showIntegrate = false;
+        },
+
 
         searchFilmInfo(){
+            this.closeAllFuzzyQuery();
+            if(this.searchType==='')
+            {
+                alert("请选择查询类型");
+                return;
+            }
             console.log(this.searchInfo+" "+this.searchType);
             if(this.searchType==="豆瓣")
                 this.searchThroughDouban();
@@ -34,12 +162,19 @@ new Vue({
 
         },
 
+        closeAllFuzzyQuery(){
+            this.FuzzyQueryState.showDouban = false;
+            this.FuzzyQueryState.showMaoYan = false;
+            this.FuzzyQueryState.showIntegrate = false;
+        },
+
         searchThroughDouban(){
             if(this.searchInfo===""){
                 alert("请输入搜索信息");
                 return;
             }
 
+            this.closeAllFuzzyQuery();
             this.showState.showDouban = true;
             this.showState.showMaoYan = false;
             this.showState.showIntegrate = false;
@@ -84,9 +219,10 @@ new Vue({
                 console.log(result);
                 this.filmInfo = result.body;
             });
-
-
         }
+
+
+
 
     },
 

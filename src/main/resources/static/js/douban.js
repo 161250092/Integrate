@@ -52,16 +52,12 @@ new Vue({
 
 
         checkHotComment(id){
-
-
-
             for(let i=0;i<this.movies.length;i++){
                 if(this.movies[i].id===id){
                    this.HotComments = this.movies[i].hotcommentList;
                    break;
                 }
             }
-
             this.showingHotComments=true;
 
         },

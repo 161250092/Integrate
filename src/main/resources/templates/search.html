@@ -15,7 +15,7 @@
             <el-input v-model="searchInfo" placeholder="请输入内容"></el-input>
         </el-col>
 
-        <el-col :span="6">
+        <el-col :span="8">
             <el-select v-model="searchType" placeholder="请选择">
                 <el-option label="豆瓣"  value="豆瓣">
                 </el-option>
@@ -24,7 +24,8 @@
                 <el-option label="豆瓣/猫眼"  value="豆瓣/猫眼">
                 </el-option>
             </el-select>
-            <el-button @click="searchFilmInfo()">搜索</el-button>
+            <el-button @click="searchFilmInfo()">精确搜索</el-button>
+            <el-button @click="fuzzyQuery()">模糊搜索</el-button>
         </el-col>
 
     </el-row>
@@ -91,7 +92,7 @@
             <p><span></span>{{filmInfo.introduction}}</p>
 
 
-            <el-table :data="filmInfo.comments" style="width: 100%">
+            <el-table :data="filmInfo.commentList" style="width: 100%">
 
                 <el-table-column label="评论" prop="comment" align="center">
                 </el-table-column>
@@ -100,6 +101,169 @@
 
         </el-row>
     </div>
+
+
+
+    <div v-if="FuzzyQueryState.showDouban">
+
+        <el-table :data="movies" style="width: 100%">
+            <el-table-column type="expand">
+                <template slot-scope="props">
+                    <el-form label-position="left" inline class="demo-table-expand">
+
+
+                        <el-form-item label="演员">
+                            <span>{{ props.row.casts }}</span>
+                        </el-form-item>
+
+                        <el-form-item label="上映日期">
+                            <span>{{ props.row.date }}</span>
+                        </el-form-item>
+
+
+                        <el-form-item label="简介">
+                            <span>{{ props.row.introduction }}</span>
+                        </el-form-item>
+
+                    </el-form>
+                </template>
+            </el-table-column>
+
+            <el-table-column label="电影名" prop="title">
+            </el-table-column>
+
+            <el-table-column label="导演" prop="directors">
+            </el-table-column>
+
+            <el-table-column label="类型" prop="type">
+            </el-table-column>
+
+            <el-table-column label="语言" prop="language">
+            </el-table-column>
+
+
+            <el-table-column label="时长" prop="time">
+            </el-table-column>
+
+            <el-table-column label="评分" prop="rate">
+            </el-table-column>
+
+            <el-table-column label="评价人数" prop="peopleNumber">
+            </el-table-column>
+
+
+
+            <el-table-column label="热评" align="center" fixed="right">
+                <template slot-scope="scope">
+                    <el-button
+                            @click="checkDoubanComment(scope.row.id)">查看热评
+                    </el-button>
+                </template>
+            </el-table-column>
+
+        </el-table>
+    </div>
+
+
+    <div v-if="FuzzyQueryState.showMaoYan">
+
+        <el-table :data="films" style="width: 100%">
+            <el-table-column type="expand">
+                <template slot-scope="props">
+                    <el-form label-position="left" inline class="demo-table-expand">
+
+
+                        <el-form-item label="上映日期">
+                            <span>{{ props.row.releasedTime }}</span>
+                        </el-form-item>
+
+
+                        <el-form-item label="简介">
+                            <span>{{ props.row.description }}</span>
+                        </el-form-item>
+
+                    </el-form>
+                </template>
+            </el-table-column>
+
+            <el-table-column label="电影名" prop="name">
+            </el-table-column>
+
+            <el-table-column label="导演" prop="director">
+            </el-table-column>
+
+            <el-table-column label="类型" prop="type">
+            </el-table-column>
+
+            <el-table-column label="时长" prop="duration">
+            </el-table-column>
+
+            <el-table-column label="评分" prop="score">
+            </el-table-column>
+
+            <el-table-column label="热评" align="center" fixed="right">
+                <template slot-scope="scope">
+                    <el-button
+                            @click="checkMaoyanComment(scope.row.id)">查看热评
+                    </el-button>
+                </template>
+            </el-table-column>
+
+        </el-table>
+
+    </div>
+
+
+
+
+    <el-dialog title="热评" :visible.sync="showingHotComments" width="60%" :close-on-click-modal="false"
+               :close-on-press-escape="false">
+
+        <el-table :data="HotComments" style="width: 100%">
+
+            <el-table-column type="expand">
+                <template slot-scope="props">
+                    <el-form label-position="left" inline class="demo-table-expand">
+
+                        <el-form-item label="评论者">
+                            <span>{{ props.row.hotCommentAuthor}}</span>
+                        </el-form-item>
+
+                    </el-form>
+                </template>
+            </el-table-column>
+
+
+            <el-table-column label="评论" prop="hotCommentContent" align="center">
+            </el-table-column>
+
+
+        </el-table>
+
+        <div slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="closeDoubanComments()">关闭</el-button>
+        </div>
+    </el-dialog>
+
+
+    <el-dialog title="热评" :visible.sync="showingFilmComments" width="60%" :close-on-click-modal="false"
+               :close-on-press-escape="false">
+
+        <el-table :data="filmComments" style="width: 100%">
+
+            <el-table-column label="评论" prop="comment" align="center">
+            </el-table-column>
+
+
+        </el-table>
+
+        <div slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="closeMaoyanComments()">关闭</el-button>
+        </div>
+    </el-dialog>
+
+
+
 
 
 
