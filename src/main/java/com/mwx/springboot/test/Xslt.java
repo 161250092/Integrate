@@ -1,6 +1,8 @@
 package com.mwx.springboot.test;
 
+import com.mwx.springboot.entity.douban.Movie;
 import com.mwx.springboot.entity.maoyan.Film;
+import com.mwx.springboot.service.DoubanServiceImpl;
 import com.mwx.springboot.service.MaoyanServiceImpl;
 
 import java.io.File;
@@ -18,13 +20,17 @@ import javax.xml.transform.stream.StreamSource;
 
 public class Xslt{
 	public static void main(String argv[]){
+		/*
 		//新xml文件的名称
 		String src = "xslts/douBanMovies.xml";
 		//复制数据到xml
 		String dest = "xslts/convertedResult.xml";
 		String xslt = "xslts/convert.xsl";
 		new Xslt().copyToXml(src, dest, xslt);
+		*/
 
+		Movie m = new DoubanServiceImpl().findDouBanDataByMovieName("20190517133453301.xml");
+		System.out.println(m.getCasts());
 	}
 
 	//转换豆瓣的数据到xml中

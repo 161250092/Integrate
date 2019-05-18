@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/maoyan")
 public class MaoyanController {
@@ -25,7 +27,7 @@ public class MaoyanController {
     }
 
     @RequestMapping("/findMaoYanDataByName")
-    public Film findMaoYanDataByName(@RequestParam(value = "searchInfo", required = false) String searchInfo ){
+    public List<Film> findMaoYanDataByName(@RequestParam(value = "searchInfo", required = false) String searchInfo ){
         System.out.println(searchInfo);
         return maoyanService.searchMaoYanFilm(searchInfo);
     }

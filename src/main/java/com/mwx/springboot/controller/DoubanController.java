@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/douban")
@@ -28,7 +30,7 @@ public class DoubanController {
 
 
     @RequestMapping("/findDouBanDataByMovieName")
-    public Movie findDouBanDataByMovieName(@RequestParam(value = "searchInfo", required = false) String searchInfo ){
+    public List<Movie> findDouBanDataByMovieName(@RequestParam(value = "searchInfo", required = false) String searchInfo ){
         System.out.println(searchInfo);
         return doubanService.searchDouBanMovies(searchInfo);
     }
