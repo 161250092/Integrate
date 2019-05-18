@@ -78,6 +78,14 @@ new Vue({
             this.showState.showMaoYan = false;
             this.showState.showIntegrate = true;
 
+            this.$http.post('/integrate/findIntegratedFilmByName',{
+                searchInfo:this.searchInfo,
+            }).then(result => {
+                console.log(result);
+                this.filmInfo = result.body;
+            });
+
+
         }
 
     },

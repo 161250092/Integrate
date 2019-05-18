@@ -24,16 +24,23 @@ public class DoubanController {
             @RequestParam(value = "pageCode", required = false) int pageCode,
             @RequestParam(value = "pageSize", required = false) int pageSize){
         System.out.println("按页查询: "+ pageCode+" "+pageSize);
-
         return doubanService.findDouBanDataByConPage(pageCode,pageSize);
     }
 
 
     @RequestMapping("/findDouBanDataByMovieName")
-    public List<Movie> findDouBanDataByMovieName(@RequestParam(value = "searchInfo", required = false) String searchInfo ){
+    public Movie findDouBanDataByMovieName(@RequestParam(value = "searchInfo", required = false) String searchInfo ){
+        System.out.println(searchInfo);
+        return doubanService.findDouBanDataByMovieName(searchInfo);
+    }
+
+
+    @RequestMapping("/searchDouBanMovies")
+    public List<Movie> searchDouBanMovies(@RequestParam(value = "searchInfo", required = false) String searchInfo){
         System.out.println(searchInfo);
         return doubanService.searchDouBanMovies(searchInfo);
     }
+
 
 
 

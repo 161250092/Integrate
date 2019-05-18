@@ -27,8 +27,13 @@ public class MaoyanController {
     }
 
     @RequestMapping("/findMaoYanDataByName")
-    public List<Film> findMaoYanDataByName(@RequestParam(value = "searchInfo", required = false) String searchInfo ){
+    public Film findMaoYanDataByName(@RequestParam(value = "searchInfo", required = false) String searchInfo ){
         System.out.println(searchInfo);
+        return maoyanService.findMaoYanDataByName(searchInfo);
+    }
+
+    @RequestMapping("/searchDouBanMovies")
+    public List<Film> searchDouBanMovies(@RequestParam(value = "searchInfo", required = false) String searchInfo){
         return maoyanService.searchMaoYanFilm(searchInfo);
     }
 

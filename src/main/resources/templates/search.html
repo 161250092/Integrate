@@ -36,8 +36,8 @@
     <div v-if="showState.showDouban">
         <el-row>
             <p>{{filmInfo.title}}</p>
-            <p>导演  {{filmInfo.directors}}  </p>
-            <p>评分  {{filmInfo.rate}}</p>
+            <p><span>导演</span>  {{filmInfo.directors}}  </p>
+            <p><span>评分</span>  {{filmInfo.rate}}</p>
             <p>{{filmInfo.casts}}</p>
             <p>{{filmInfo.type}}</p>
             <p>{{filmInfo.nation}}</p>
@@ -47,7 +47,7 @@
             <p>{{filmInfo.peopleNumber}}</p>
             <p>{{filmInfo.introduction}}</p>
 
-            <el-table :data="filmInfo.hotcommentList" style="width: 50%">
+            <el-table :data="filmInfo.hotcommentList" style="width: 100%">
                 <el-table-column label="评论" prop="hotCommentContent" align="center">
                 </el-table-column>
             </el-table>
@@ -67,7 +67,7 @@
             <p>{{filmInfo.score}}</p>
             <p>{{filmInfo.description}}</p>
 
-            <el-table :data="filmInfo.filmCommentList" style="width: 50%">
+            <el-table :data="filmInfo.filmCommentList" style="width: 100%">
                 <el-table-column label="评论" prop="comment" align="center">
                 </el-table-column>
             </el-table>
@@ -78,16 +78,31 @@
 
     <div v-if="showState.showIntegrate">
         <el-row>
+            <p>{{filmInfo.title}}</p>
+            <p>导演  {{filmInfo.directors}}  </p>
+            <p>评分  {{filmInfo.rate}}</p>
+            <p>{{filmInfo.casts}}</p>
+            <p>{{filmInfo.type}}</p>
+            <p>{{filmInfo.nation}}</p>
+            <p>{{filmInfo.language}}</p>
+            <p>{{filmInfo.date}}</p>
+            <p>{{filmInfo.time}}</p>
+            <p>{{filmInfo.peopleNumber}}</p>
+            <p>{{filmInfo.introduction}}</p>
 
-            <el-table :data="filmInfo.comments" style="width: 50%">
+            <el-table :data="filmInfo.comments" style="width: 100%">
 
-                <el-table-column label="评论" prop="content" align="center">
+                <el-table-column label="评论" prop="comment" align="center">
                 </el-table-column>
 
             </el-table>
 
         </el-row>
     </div>
+
+
+
+
 
 
 
