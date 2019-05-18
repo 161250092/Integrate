@@ -33,8 +33,9 @@ public class MaoyanServiceImpl implements MaoyanService{
     @Override
     public Film findMaoYanDataByName(String name) {
         //新xml文件的名称
-        String src = maoyanDataService.findMaoYanDataByMovieName(name);
+       String src = maoyanDataService.findMaoYanDataByMovieName(name);
 //        src = "maoYan/" + src;
+        //String src = "maoYan/1558108339178.xml";
         //复制数据到xml
         String dest = "xslts/maoYanFilm.xml";
         String xslt = "xslts/xsltMaoYan.xsl";
@@ -81,7 +82,7 @@ public class MaoyanServiceImpl implements MaoyanService{
 
     //获得movie的返回值
     private Film getMovie(String src){
-        Film ret = new Film();
+        Film film = new Film();
         try {
             //创建SAXReader对象
             SAXReader reader = new SAXReader();
@@ -93,7 +94,6 @@ public class MaoyanServiceImpl implements MaoyanService{
 
             //同时迭代当前节点下面的所有子节点
             List<Element> maoYanFilms = root.elements();
-            Film film = new Film();
             //filmInfo
             film.setName(maoYanFilms.get(0).element("filmInfo").elementText("name"));
             film.setDirector(maoYanFilms.get(0).element("filmInfo").elementText("director"));
@@ -120,7 +120,7 @@ public class MaoyanServiceImpl implements MaoyanService{
             e.printStackTrace();
         }
 
-        return ret;
+        return film;
     }
 
     //获得movies的返回值

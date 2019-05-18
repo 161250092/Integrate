@@ -29,8 +29,8 @@ public class Xslt{
 		new Xslt().copyToXml(src, dest, xslt);
 		*/
 
-		Movie m = new DoubanServiceImpl().findDouBanDataByMovieName("20190517133453301.xml");
-		System.out.println(m.getCasts());
+		Film m = new MaoyanServiceImpl().findMaoYanDataByName("1558108339178.xml");
+		System.out.println(m.getDescription());
 	}
 
 	//转换豆瓣的数据到xml中
