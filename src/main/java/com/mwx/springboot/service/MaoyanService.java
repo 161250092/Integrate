@@ -3,6 +3,8 @@ package com.mwx.springboot.service;
 import com.mwx.springboot.entity.PageBean;
 import com.mwx.springboot.entity.maoyan.Film;
 
+import java.util.List;
+
 public interface MaoyanService {
 
     /**
@@ -15,5 +17,5 @@ public interface MaoyanService {
 
     public Film findMaoYanDataByName(String name);
 
-    public Film searchMaoYanFilm(String searchInfo);
+    public List<Film> searchMaoYanFilm(String searchInfo);
 }

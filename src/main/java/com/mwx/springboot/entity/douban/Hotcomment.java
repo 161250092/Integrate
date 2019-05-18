@@ -8,6 +8,8 @@ public class Hotcomment {
     private String hotCommentDate;
     private String hotCommentContent;
 
+    public Hotcomment(){}
+
     public Hotcomment(int hotcomments_id, int movie_id, String hotCommentAuthor, String hotCommentDate, String hotCommentContent) {
         this.hotcomments_id = hotcomments_id;
         this.movie_id = movie_id;

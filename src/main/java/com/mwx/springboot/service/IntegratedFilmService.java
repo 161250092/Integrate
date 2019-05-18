@@ -3,6 +3,8 @@ package com.mwx.springboot.service;
 import com.mwx.springboot.entity.PageBean;
 import com.mwx.springboot.entity.integrate.IntegratedFilm;
 
+import java.util.List;
+
 public interface IntegratedFilmService {
 
     /**
@@ -17,6 +19,6 @@ public interface IntegratedFilmService {
     public IntegratedFilm findIntegratedFilmByName(String name);
 
     //模糊查询
-    public IntegratedFilm searchIntegratedFilm(String searchInfo);
+    public List<IntegratedFilm> searchIntegratedFilm(String searchInfo);
 
 }

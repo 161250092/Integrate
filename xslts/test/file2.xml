@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<staffs>
+
+  <staff order = "1">
+
+    <name>wang </name>
+
+    <Money>100 </Money>
+
+  </staff>
+
+  <staff order = "2">
+
+    <name>Li </name>
+
+    <Money>200 </Money>
+
+  </staff>
+
+  <staff order = "3">
+
+    <name>Q1 </name>
+
+    <Money>400 </Money>
+
+  </staff>
+
+</staffs>
