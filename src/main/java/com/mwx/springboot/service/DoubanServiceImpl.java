@@ -35,7 +35,7 @@ public class DoubanServiceImpl implements  DoubanService{
         //新xml文件的名称
         String src = doubanDataService.findDouBanDataByMovieName(name);
         //String src="20190517133453301.xml";
-        src = "douban/" + src;
+//        src = "douban/" + src;
         //复制数据到xml
         String dest = "xslts/douBanMovies.xml";
         String xslt = "xslts/xsltDouban.xsl";
@@ -48,7 +48,7 @@ public class DoubanServiceImpl implements  DoubanService{
     public List<Movie> searchDouBanMovies(String searchInfo) {
         //新xml文件的名称
         String src = doubanDataService.searchDouBanMovies(searchInfo);
-        src = "douban/" + src;
+//        src = "douban/" + src;
         //复制数据到xml
         String dest = "xslts/douBanMovies.xml";
         String xslt = "xslts/xsltDouban.xsl";
