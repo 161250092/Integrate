@@ -121,7 +121,7 @@ public class IntegratedFilmServiceImpl implements  IntegratedFilmService{
             for(Element e : hotComments){
                 Comment h = new Comment();
                 h.setMovie_name(movies.get(0).elementText("title"));
-                h.setComment(e.elementText("hotComment"));
+                h.setComment(e.getText());
                 coms.add(h);
             }
             ret.setCommentList(coms);
@@ -165,7 +165,7 @@ public class IntegratedFilmServiceImpl implements  IntegratedFilmService{
                 for(Element e : hotComments){
                     Comment h = new Comment();
                     h.setMovie_name(movies.get(0).elementText("title"));
-                    h.setComment(e.elementText("hotComment"));
+                    h.setComment(e.getText());
                     coms.add(h);
                 }
                 ret.setCommentList(coms);

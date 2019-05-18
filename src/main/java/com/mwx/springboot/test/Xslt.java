@@ -1,8 +1,10 @@
 package com.mwx.springboot.test;
 
 import com.mwx.springboot.entity.douban.Movie;
+import com.mwx.springboot.entity.integrate.IntegratedFilm;
 import com.mwx.springboot.entity.maoyan.Film;
 import com.mwx.springboot.service.DoubanServiceImpl;
+import com.mwx.springboot.service.IntegratedFilmServiceImpl;
 import com.mwx.springboot.service.MaoyanServiceImpl;
 
 import java.io.File;
@@ -28,9 +30,12 @@ public class Xslt{
 		String xslt = "xslts/convert.xsl";
 		new Xslt().copyToXml(src, dest, xslt);
 		*/
-
+/*
 		Film m = new MaoyanServiceImpl().findMaoYanDataByName("1558108339178.xml");
-		System.out.println(m.getDescription());
+		System.out.println(m.getDescription());*/
+
+		IntegratedFilm i = new IntegratedFilmServiceImpl().findIntegratedFilmByName("");
+		System.out.println(i.getCommentList().get(0).getComment());
 	}
 
 	//转换豆瓣的数据到xml中

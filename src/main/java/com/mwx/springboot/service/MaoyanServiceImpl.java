@@ -141,23 +141,23 @@ public class MaoyanServiceImpl implements MaoyanService{
             for(int i = 0; i < maoYanFilms.size(); i++){
                 Film film = new Film();
                 //filmInfo
-                film.setName(maoYanFilms.get(0).element("filmInfo").elementText("name"));
-                film.setDirector(maoYanFilms.get(0).element("filmInfo").elementText("director"));
-                film.setType(maoYanFilms.get(0).element("filmInfo").elementText("type"));
-                film.setFilmingLocation(maoYanFilms.get(0).element("filmInfo").elementText("filmingLocation"));
-                film.setDuration(maoYanFilms.get(0).element("filmInfo").elementText("duration"));
-                film.setReleasedTime(maoYanFilms.get(0).element("filmInfo").elementText("releasedTime"));
-                film.setScore(maoYanFilms.get(0).element("filmInfo").elementText("score"));
+                film.setName(maoYanFilms.get(i).element("filmInfo").elementText("name"));
+                film.setDirector(maoYanFilms.get(i).element("filmInfo").elementText("director"));
+                film.setType(maoYanFilms.get(i).element("filmInfo").elementText("type"));
+                film.setFilmingLocation(maoYanFilms.get(i).element("filmInfo").elementText("filmingLocation"));
+                film.setDuration(maoYanFilms.get(i).element("filmInfo").elementText("duration"));
+                film.setReleasedTime(maoYanFilms.get(i).element("filmInfo").elementText("releasedTime"));
+                film.setScore(maoYanFilms.get(i).element("filmInfo").elementText("score"));
                 //filmDescription
-                film.setDescription(maoYanFilms.get(0).element("filmDescription").elementText("description"));
+                film.setDescription(maoYanFilms.get(i).element("filmDescription").elementText("description"));
                 //filmComments
                 List<FilmComment> coms = new ArrayList<>();
-                List<Element> elements = maoYanFilms.get(0).element("filmComments").elements();
+                List<Element> elements = maoYanFilms.get(i).element("filmComments").elements();
                 for(Element e:elements){
                     FilmComment com = new FilmComment();
-                    com.setId(Integer.parseInt(maoYanFilms.get(0).element("filmInfo").attributeValue("id")));
+                    com.setId(Integer.parseInt(maoYanFilms.get(i).element("filmInfo").attributeValue("id")));
                     com.setComment(e.getText());
-                    com.setFilmName(maoYanFilms.get(0).element("filmInfo").elementText("name"));
+                    com.setFilmName(maoYanFilms.get(i).element("filmInfo").elementText("name"));
                     coms.add(com);
                 }
                 film.setFilmCommentList(coms);
