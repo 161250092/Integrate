@@ -26,6 +26,8 @@ public class IntegratedFilmServiceImpl implements  IntegratedFilmService{
         return null;
     }
 
+
+
     @Override
     public IntegratedFilm findIntegratedFilmByName(String name) {
         //生成自己的两个xml文件

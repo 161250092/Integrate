@@ -59,12 +59,12 @@
     <div v-if="showState.showMaoYan">
         <el-row>
             <p>  {{filmInfo.name}}</p>
-            <p>  {{filmInfo.director}}</p>
-            <p>{{filmInfo.type}}</p>
+            <p> <span>导演: </span> {{filmInfo.director}}</p>
+            <p><span>类型: </span>{{filmInfo.type}}</p>
             <p>{{filmInfo.filmingLocation}}</p>
-            <p>{{filmInfo.duration}}</p>
+            <p><span>时长: </span>{{filmInfo.duration}}</p>
             <p>{{filmInfo.releasedTime}}</p>
-            <p>{{filmInfo.score}}</p>
+            <p><span>评分: </span>{{filmInfo.score}}</p>
             <p>{{filmInfo.description}}</p>
 
             <el-table :data="filmInfo.filmCommentList" style="width: 100%">

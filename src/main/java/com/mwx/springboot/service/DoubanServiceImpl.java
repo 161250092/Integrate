@@ -1,6 +1,7 @@
 package com.mwx.springboot.service;
 
 import com.mwx.springboot.dao.DoubanDataService;
+import com.mwx.springboot.dao.DoubanDataServiceImpl;
 import com.mwx.springboot.entity.PageBean;
 import com.mwx.springboot.entity.douban.Hotcomment;
 import com.mwx.springboot.entity.douban.Movie;
@@ -33,7 +34,7 @@ public class DoubanServiceImpl implements  DoubanService{
     @Override
     public Movie findDouBanDataByMovieName(String name) {
         //新xml文件的名称
-        String src = doubanDataService.findDouBanDataByMovieName(name);
+        String src = new DoubanDataServiceImpl().findDouBanDataByMovieName(name);
 
         //String src="20190517133453301.xml";
 //        src = "douban/" + src;

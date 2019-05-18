@@ -1,6 +1,7 @@
 package com.mwx.springboot.service;
 
 import com.mwx.springboot.dao.MaoyanDataService;
+import com.mwx.springboot.dao.MaoyanDataServiceImpl;
 import com.mwx.springboot.entity.PageBean;
 import com.mwx.springboot.entity.maoyan.Film;
 import com.mwx.springboot.entity.maoyan.FilmComment;
@@ -33,7 +34,7 @@ public class MaoyanServiceImpl implements MaoyanService{
     @Override
     public Film findMaoYanDataByName(String name) {
         //新xml文件的名称
-       String src = maoyanDataService.findMaoYanDataByMovieName(name);
+       String src = new MaoyanDataServiceImpl().findMaoYanDataByMovieName(name);
 //        src = "maoYan/" + src;
         //String src = "maoYan/1558108339178.xml";
         //复制数据到xml
