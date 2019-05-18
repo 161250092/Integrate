@@ -34,7 +34,7 @@ public class MaoyanServiceImpl implements MaoyanService{
     public Film findMaoYanDataByName(String name) {
         //新xml文件的名称
         String src = maoyanDataService.findMaoYanDataByMovieName(name);
-        src = "maoYan/" + src;
+//        src = "maoYan/" + src;
         //复制数据到xml
         String dest = "xslts/maoYanFilm.xml";
         String xslt = "xslts/xsltMaoYan.xsl";
@@ -47,7 +47,7 @@ public class MaoyanServiceImpl implements MaoyanService{
     public List<Film> searchMaoYanFilm(String searchInfo) {
         //新xml文件的名称
         String src = maoyanDataService.searchMaoYanMovies(searchInfo);
-        src = "maoYan/" + src;
+//        src = "maoYan/" + src;
         //复制数据到xml
         String dest = "xslts/maoYanFilm.xml";
         String xslt = "xslts/xsltMaoYan.xsl";
