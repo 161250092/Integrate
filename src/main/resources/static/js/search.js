@@ -148,7 +148,7 @@ new Vue({
 
         checkIntegrateComment(integrateFilm){
             console.log(integrateFilm)
-            this.commentLists = integrateFilm.commentLists;
+            this.commentLists = integrateFilm.commentList;
             this.showIntegrateComments=true;
         },
 

@@ -8,6 +8,7 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.xml.transform.*;
@@ -26,13 +27,17 @@ public class IntegratedFilmServiceImpl implements  IntegratedFilmService{
         return null;
     }
 
+    @Autowired
+    private DoubanService doubanService;
 
+    @Autowired
+    private MaoyanService maoyanService;
 
     @Override
     public IntegratedFilm findIntegratedFilmByName(String name) {
         //生成自己的两个xml文件
-        new DoubanServiceImpl().findDouBanDataByMovieName(name);
-        new MaoyanServiceImpl().findMaoYanDataByName(name);
+        doubanService.findDouBanDataByMovieName(name);
+        maoyanService.findMaoYanDataByName(name);
 
         //解析两个xml后，生成convertedResult.xml
         //新xml文件的名称
@@ -48,8 +53,8 @@ public class IntegratedFilmServiceImpl implements  IntegratedFilmService{
     @Override
     public List<IntegratedFilm> searchIntegratedFilm(String searchInfo) {
         //生成自己的两个xml文件
-        new DoubanServiceImpl().searchDouBanMovies(searchInfo);
-        new MaoyanServiceImpl().searchMaoYanFilm(searchInfo);
+        doubanService.searchDouBanMovies(searchInfo);
+        maoyanService.searchMaoYanFilm(searchInfo);
 
         //解析两个xml后，生成convertedResult.xml
         //新xml文件的名称
