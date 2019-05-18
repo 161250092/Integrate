@@ -35,17 +35,17 @@
 
     <div v-if="showState.showDouban">
         <el-row>
-            <p>{{filmInfo.title}}</p>
-            <p><span>导演</span>  {{filmInfo.directors}}  </p>
-            <p><span>评分</span>  {{filmInfo.rate}}</p>
-            <p>{{filmInfo.casts}}</p>
-            <p>{{filmInfo.type}}</p>
-            <p>{{filmInfo.nation}}</p>
-            <p>{{filmInfo.language}}</p>
-            <p>{{filmInfo.date}}</p>
-            <p>{{filmInfo.time}}</p>
-            <p>{{filmInfo.peopleNumber}}</p>
-            <p>{{filmInfo.introduction}}</p>
+            <p><span>  </span>{{filmInfo.title}}</p>
+            <p><span>导演: </span>  {{filmInfo.directors}}  </p>
+            <p><span>评分: </span>  {{filmInfo.rate}}</p>
+            <p><span>演员: </span>{{filmInfo.casts}}</p>
+            <p><span>类型: </span>{{filmInfo.type}}</p>
+            <p><span></span>{{filmInfo.nation}}</p>
+            <p><span>语言: </span>{{filmInfo.language}}</p>
+            <p><span>上映时间: </span>{{filmInfo.date}}</p>
+            <p><span>时长: </span>{{filmInfo.time}}</p>
+            <p><span>点评人数: </span>{{filmInfo.peopleNumber}}</p>
+            <p><span></span>{{filmInfo.introduction}}</p>
 
             <el-table :data="filmInfo.hotcommentList" style="width: 100%">
                 <el-table-column label="评论" prop="hotCommentContent" align="center">
@@ -79,16 +79,17 @@
     <div v-if="showState.showIntegrate">
         <el-row>
             <p>{{filmInfo.title}}</p>
-            <p>导演  {{filmInfo.directors}}  </p>
-            <p>评分  {{filmInfo.rate}}</p>
-            <p>{{filmInfo.casts}}</p>
-            <p>{{filmInfo.type}}</p>
-            <p>{{filmInfo.nation}}</p>
-            <p>{{filmInfo.language}}</p>
-            <p>{{filmInfo.date}}</p>
-            <p>{{filmInfo.time}}</p>
-            <p>{{filmInfo.peopleNumber}}</p>
-            <p>{{filmInfo.introduction}}</p>
+            <p><span>导演: </span>  {{filmInfo.directors}}  </p>
+            <p><span>评分: </span>  {{filmInfo.rate}}</p>
+            <p><span>演员: </span>{{filmInfo.casts}}</p>
+            <p><span>类型: </span>{{filmInfo.type}}</p>
+            <p><span></span>{{filmInfo.nation}}</p>
+            <p><span>语言: </span>{{filmInfo.language}}</p>
+            <p><span>上映时间: </span>{{filmInfo.date}}</p>
+            <p><span>时长: </span>{{filmInfo.time}}</p>
+            <p><span>点评人数: </span>{{filmInfo.peopleNumber}}</p>
+            <p><span></span>{{filmInfo.introduction}}</p>
+
 
             <el-table :data="filmInfo.comments" style="width: 100%">
 
