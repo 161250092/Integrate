@@ -38,6 +38,7 @@ public class IntegrateController {
 
     @RequestMapping("/searchIntegratedFilm")
     public List<IntegratedFilm> searchDouBanMovies(@RequestParam(value = "searchInfo", required = false) String searchInfo){
+        System.out.println(searchInfo);
         return integratedFilmService.searchIntegratedFilm(searchInfo);
     }
 

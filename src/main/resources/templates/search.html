@@ -214,6 +214,66 @@
     </div>
 
 
+    <div v-if="FuzzyQueryState.showIntegrate">
+
+        <el-table :data="integrateFilms" style="width: 100%">
+            <el-table-column type="expand">
+                <template slot-scope="props">
+                    <el-form label-position="left" inline class="demo-table-expand">
+
+                        <el-form-item label="演员">
+                            <span>{{ props.row.casts }}</span>
+                        </el-form-item>
+
+                        <el-form-item label="上映日期">
+                            <span>{{ props.row.date }}</span>
+                        </el-form-item>
+
+
+                        <el-form-item label="简介">
+                            <span>{{ props.row.introduction }}</span>
+                        </el-form-item>
+
+                    </el-form>
+                </template>
+            </el-table-column>
+
+            <el-table-column label="电影名" prop="title">
+            </el-table-column>
+
+            <el-table-column label="导演" prop="directors">
+            </el-table-column>
+
+            <el-table-column label="类型" prop="type">
+            </el-table-column>
+
+            <el-table-column label="语言" prop="language">
+            </el-table-column>
+
+
+            <el-table-column label="时长" prop="time">
+            </el-table-column>
+
+            <el-table-column label="评分" prop="rate">
+            </el-table-column>
+
+            <el-table-column label="评价人数" prop="peopleNumber">
+            </el-table-column>
+
+
+
+            <el-table-column label="热评" align="center" fixed="right">
+                <template slot-scope="scope">
+                    <el-button
+                            @click="checkIntegrateComment(scope.row)">查看热评
+                    </el-button>
+                </template>
+            </el-table-column>
+
+        </el-table>
+
+    </div>
+
 
 
     <el-dialog title="热评" :visible.sync="showingHotComments" width="60%" :close-on-click-modal="false"
@@ -264,7 +324,18 @@
 
 
 
+    <el-dialog title="热评" :visible.sync="showIntegrateComments" width="60%" :close-on-click-modal="false"
+               :close-on-press-escape="false">
 
+        <el-table :data="commentLists" style="width: 100%">
+            <el-table-column label="评论" prop="comment" align="center">
+            </el-table-column>
+        </el-table>
+
+        <div slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="closeIntegrateComment()">关闭</el-button>
+        </div>
+    </el-dialog>
 
 
 

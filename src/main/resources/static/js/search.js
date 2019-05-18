@@ -39,7 +39,9 @@ new Vue({
 
 
             //集成数据的模糊查询结果
-
+            integrateFilms:[{}],
+            commentLists: [{}],
+            showIntegrateComments:false,
 
 
 
@@ -48,6 +50,7 @@ new Vue({
         }
     },
     methods: {
+
         fuzzyQuery(){
 
             if(this.searchType==='')
@@ -127,16 +130,33 @@ new Vue({
 
 
 
-
-
         fuzzyQueryThroughIntegrate(){
             this.FuzzyQueryState.showDouban = false;
             this.FuzzyQueryState.showMaoYan = false;
             this.FuzzyQueryState.showIntegrate = true;
 
-            alert("undo");
+
+
+            this.$http.post('/integrate/searchIntegratedFilm',{
+                searchInfo:this.searchInfo
+            }).then(result => {
+                console.log(result);
+                this.integrateFilms = result.body;
+            });
 
         },
+
+        checkIntegrateComment(integrateFilm){
+            console.log(integrateFilm)
+            this.commentLists = integrateFilm.commentLists;
+            this.showIntegrateComments=true;
+        },
+
+        closeIntegrateComment(){
+            this.showIntegrateComments=false;
+        },
+
+
 
         closeAllAccurateInfo(){
             this.showState.showDouban = false;
@@ -145,6 +165,7 @@ new Vue({
         },
 
 
+        //精确查询
         searchFilmInfo(){
             this.closeAllFuzzyQuery();
             if(this.searchType==='')
@@ -220,9 +241,6 @@ new Vue({
                 this.filmInfo = result.body;
             });
         }
-
-
-
 
     },
 
